@@ -1,0 +1,7 @@
+base  acronym-plugin
+name  acronym-plugin
+author Thorsten Staerk
+email  dev@staerk.de
+date   2011-06-30
+desc   acronym tag for Dokuwiki
+url    http://www.staerk.de/thorsten/acronym-plugin
