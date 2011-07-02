@@ -55,7 +55,7 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     */
     function getSort()
     {
-        return 99;
+        return 1;
     }
      
      
@@ -116,9 +116,9 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
             case DOKU_LEXER_MATCHED :
                 //break;
             case DOKU_LEXER_UNMATCHED :
-                //break;
+                return array($state, $match);
             case DOKU_LEXER_EXIT :
-                //break;
+                return array($state, '');
             case DOKU_LEXER_SPECIAL :
                 //break;
         }
@@ -148,8 +148,14 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     {
         if($mode == 'xhtml')
         {
-            $renderer->doc .= "<acronym title='bla'>hello</acronym>";            // ptype = 'normal'
-//            $renderer->doc .= "<p>Hello World!</p>";     // ptype = 'block'
+            list($state,$match) = $data;
+            switch ($state) 
+            {
+                case DOKU_LEXER_ENTER :
+                    $renderer->doc .= "$state$match<acronym title='bla'>hello</acronym>";            // ptype = 'normal'
+                case DOKU_LEXER_EXIT :
+                    $renderer->doc .= "</acronym>";
+            }
             return true;
         }
         return false;
