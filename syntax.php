@@ -157,7 +157,7 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
                 case DOKU_LEXER_UNMATCHED :
                     $renderer->doc .= "$match";
                 case DOKU_LEXER_EXIT :
-                    $renderer->doc .= "";
+                    $renderer->doc .= "</acronym>";
             }
             return true;
         }
