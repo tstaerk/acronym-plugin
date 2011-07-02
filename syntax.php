@@ -148,7 +148,7 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     {
         if($mode == 'xhtml')
         {
-            $renderer->doc .= "Hello World!";            // ptype = 'normal'
+            $renderer->doc .= "<acronym title='bla'>hello</acronym>";            // ptype = 'normal'
 //            $renderer->doc .= "<p>Hello World!</p>";     // ptype = 'block'
             return true;
         }
