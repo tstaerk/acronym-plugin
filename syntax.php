@@ -69,7 +69,7 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     */
     function connectTo($mode) 
     {
-        $this->Lexer->addEntryPattern('<acronym>',$mode,'plugin_acronym');
+        $this->Lexer->addEntryPattern('<acronym title=.*?>(?=.*?</acronym>)',$mode,'plugin_acronym');
     }
      
     function postConnect() 
@@ -111,18 +111,18 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     {
         switch ($state) 
         {
-          case DOKU_LEXER_ENTER : 
-            //break;
-          case DOKU_LEXER_MATCHED :
-            //break;
-          case DOKU_LEXER_UNMATCHED :
-            //break;
-          case DOKU_LEXER_EXIT :
-            //break;
-          case DOKU_LEXER_SPECIAL :
-            //break;
+            case DOKU_LEXER_ENTER : 
+                return array($state, $match);
+            case DOKU_LEXER_MATCHED :
+                //break;
+            case DOKU_LEXER_UNMATCHED :
+                //break;
+            case DOKU_LEXER_EXIT :
+                //break;
+            case DOKU_LEXER_SPECIAL :
+                //break;
         }
-        return array($state, $match);
+        return false;
     }
      
    /**
