@@ -44,8 +44,6 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     {
         return 'formatting';
     }
-
-    function getAllowedTypes() { return array('formatting', 'substition', 'disabled'); }   
      
    /**
     * Where to sort in?
@@ -71,13 +69,12 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     */
     function connectTo($mode) 
     {
-    //  $this->Lexer->addSpecialPattern('<TEST>',$mode,'plugin_acronym');
-          $this->Lexer->addEntryPattern('<TEST>',$mode,'plugin_acronym');
+        $this->Lexer->addEntryPattern('<acronym>',$mode,'plugin_acronym');
     }
      
     function postConnect() 
     {
-          $this->Lexer->addExitPattern('</TEST>','plugin_acronym');
+        $this->Lexer->addExitPattern('</acronym>','plugin_acronym');
     }
      
      
