@@ -149,12 +149,15 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
         if($mode == 'xhtml')
         {
             list($state,$match) = $data;
+            $match=$data[1];
             switch ($state) 
             {
                 case DOKU_LEXER_ENTER :
-                    $renderer->doc .= "$state$match<acronym title='bla'>hello</acronym>";            // ptype = 'normal'
+                    $renderer->doc .= "$match<acronym title='bla'>";
+                case DOKU_LEXER_UNMATCHED :
+                    $renderer->doc .= "$match";
                 case DOKU_LEXER_EXIT :
-                    $renderer->doc .= "</acronym>";
+                    $renderer->doc .= "";
             }
             return true;
         }
