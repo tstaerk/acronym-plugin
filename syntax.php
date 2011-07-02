@@ -153,7 +153,7 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
             switch ($state) 
             {
                 case DOKU_LEXER_ENTER :
-                    $renderer->doc .= "$match<acronym title='bla'>";
+                    $renderer->doc .= "$match";
                 case DOKU_LEXER_UNMATCHED :
                     $renderer->doc .= "$match";
                 case DOKU_LEXER_EXIT :
