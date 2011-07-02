@@ -42,8 +42,10 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     */
     function getType()
     {
-        return 'substition';
+        return 'formatting';
     }
+
+    function getAllowedTypes() { return array('formatting', 'substition', 'disabled'); }   
      
    /**
     * Where to sort in?
@@ -69,13 +71,14 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
     */
     function connectTo($mode) 
     {
-      $this->Lexer->addSpecialPattern('<TEST>',$mode,'plugin_acronym');
-    //      $this->Lexer->addEntryPattern('<TEST>',$mode,'plugin_test');
+    //  $this->Lexer->addSpecialPattern('<TEST>',$mode,'plugin_acronym');
+          $this->Lexer->addEntryPattern('<TEST>',$mode,'plugin_acronym');
     }
      
-    //    function postConnect() {
-    //      $this->Lexer->addExitPattern('</TEST>','plugin_test');
-    //    }
+    function postConnect() 
+    {
+          $this->Lexer->addExitPattern('</TEST>','plugin_acronym');
+    }
      
      
    /**
@@ -112,17 +115,17 @@ class syntax_plugin_acronym extends DokuWiki_Syntax_Plugin
         switch ($state) 
         {
           case DOKU_LEXER_ENTER : 
-            break;
+            //break;
           case DOKU_LEXER_MATCHED :
-            break;
+            //break;
           case DOKU_LEXER_UNMATCHED :
-            break;
+            //break;
           case DOKU_LEXER_EXIT :
-            break;
+            //break;
           case DOKU_LEXER_SPECIAL :
-            break;
+            //break;
         }
-        return array();
+        return array($state, $match);
     }
      
    /**
