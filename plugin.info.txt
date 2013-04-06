@@ -1,5 +1,5 @@
-base  acronym-plugin
-name  acronym-plugin
+base  acronym
+name  acronym
 author Thorsten Staerk
 email  dev@staerk.de
 date   2011-06-30
